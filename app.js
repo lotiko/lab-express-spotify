@@ -32,12 +32,28 @@ app.get("/", function (req, res) {
   res.render("home");
 });
 
+function createDataCard(srcData, type) {
+  let newdata = {};
+  if (srcData.images[0]) {
+    newdata = {
+      name: srcData.name,
+      image: {
+        url: srcData.images[0].url,
+        size: calculateAspectRatioFit(srcData.images[0].width, srcData.images[0].height, 150, 150),
+      },
+      id: srcData.id,
+    };
+    return { ...newdata, type: type, subType: type === "artists" ? "albums" : "tracks" };
+  }
+  return;
+}
+
 app.get("/artist-search", function (req, res) {
   // res.render('/artist-search')
   spotifyApi
     .searchArtists(req.query.search)
     .then((data) => {
-      console.log("The received data from the API!");
+      console.log("The received data from the API!", data.body.artists.items);
       let dataView = [];
       data.body.artists.items.map((val) => {
         if (val.images[0]) {
@@ -50,6 +66,7 @@ app.get("/artist-search", function (req, res) {
     })
     .catch((err) => console.log("The error while searching artists occurred: ", err));
 });
+
 app.get("/albums/:id", async (req, res, next) => {
   try {
     let dataSpotify = await spotifyApi.getArtistAlbums(req.params.id);
@@ -66,7 +83,7 @@ app.get("/tracks/:id", async (req, res, next) => {
     //let dataView = dataSpotify.body.items.map((element) => createDataCard(element, "tracks"));
     // let test = await spotifyApi.getAudioFeaturesForTrack(dataSpotify.body.items[0].id);
     // let test = await spotifyApi.getAudioAnalysisForTrack(dataSpotify.body.items[0].id);
-
+    console.log(dataSpotify.body.items[0]);
     res.render("tracks-search-results", { data: dataSpotify.body.items });
   } catch (error) {
     console.log("Oops error => ", error);
@@ -89,20 +106,4 @@ function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
   var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
 
   return { width: srcWidth * ratio, height: srcHeight * ratio };
-}
-
-function createDataCard(srcData, type) {
-  let newdata = {};
-  if (srcData.images[0]) {
-    newdata = {
-      name: srcData.name,
-      image: {
-        url: srcData.images[0].url,
-        size: calculateAspectRatioFit(srcData.images[0].width, srcData.images[0].height, 150, 150),
-      },
-      id: srcData.id,
-    };
-    return { ...newdata, type: type, subType: type === "artists" ? "albums" : "tracks" };
-  }
-  return;
 }

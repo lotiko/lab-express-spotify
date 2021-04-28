@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+/*************/
+/**HOME*******/
+/*************/
+#home {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/images/spotify-background.jpeg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  width: 50vw;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  align-items: center;
+  margin: auto;
+}
+input {
+  margin: auto;
+  opacity: 1;
+}
+input[type="text"] {
+  text-align: left;
+  width: 30em;
+  margin-bottom: 0;
+}
+input[type="submit"] {
+  width: 12em;
+  background: red;
+  color: white;
+  font-weight: 700;
+  padding: 0.5em;
+  text-align: center;
+  border: none;
+  margin-top: 2em;
+}
