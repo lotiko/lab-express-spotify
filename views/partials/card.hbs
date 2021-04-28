@@ -1,9 +1,11 @@
-{{#each data}}
-<div class="card-{{this.type}}">
-    <img src="{{this.image.url}}" height="{{this.image.size.height}}" width="{{this.image.size.width}}" alt="image of {{this.type}}">
-    <div>
-    <h1>{{this.name}}</h1>
-    <button><a href="/{{this.subType}}/{{this.id}}">Views {{this.subType}}</a></button>
-    </div>   
+<div class="cards">
+    {{#each data}}
+    <div class="card">
+        <img src="{{this.image.url}}" height="200" width="200" alt="image of {{this.type}}">
+        <div>
+            <h3>{{this.name}}</h3>
+            <a href="/{{this.subType}}/{{this.id}}" class="button">Views {{this.subType}}</a>
+        </div>   
+    </div>
+    {{/each}}
 </div>
-{{/each}}

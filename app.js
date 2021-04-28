@@ -39,7 +39,7 @@ function createDataCard(srcData, type) {
       name: srcData.name,
       image: {
         url: srcData.images[0].url,
-        size: calculateAspectRatioFit(srcData.images[0].width, srcData.images[0].height, 150, 150),
+        size: calculateAspectRatioFit(srcData.images[0].width, srcData.images[0].height, 200, 200),
       },
       id: srcData.id,
     };

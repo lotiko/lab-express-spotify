@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
 }
-body {
+body,
+p {
   margin: 0;
 }
 /*************/
@@ -36,11 +37,51 @@ input[type="text"] {
 }
 input[type="submit"] {
   width: 12em;
-  background: red;
+  background: rgb(245, 94, 94);
   color: white;
   font-weight: 700;
   padding: 0.5em;
   text-align: center;
   border: none;
   margin-top: 2em;
+}
+/*************/
+/**CARD****/
+/*************/
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.6em;
+  font-weight: 700;
+  font-family: sans-serif;
+  text-align: center;
+}
+.cards :last-child {
+  align-self: flex-start;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 2em;
+}
+a.button {
+  text-decoration: none;
+  width: 10em;
+  background: rgb(245, 94, 94);
+  color: white;
+  text-align: center;
+  padding: 0.3em;
+  border: none;
+  border-radius: 3px;
+  margin: auto;
+  margin-bottom: 1em;
+}
+.card div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: rgb(71, 71, 71);
+  color: white;
+  align-items: center;
 }
