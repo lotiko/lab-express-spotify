@@ -90,3 +90,66 @@ a.button {
   align-items: center;
   flex: 1;
 }
+/*************/
+/**TRACKS****/
+/*************/
+figure {
+  display: flex;
+}
+/*
+.custom-player button {
+  width: 1.3em;
+  height: 1.3em;
+}
+.playpause.play {
+  background-image: url(/images/iconmonstr-media-control-4-240.png);
+}
+.playpause.pause {
+  background-image: url(/images/iconmonstr-media-control-8-240.png);
+}
+.listen-mute.mute {
+  background-image: url(/images/iconmonstr-audio-9-240.png);
+}
+.listen-mute.listen {
+  background-image: url(/images/iconmonstr-audio-5-240.png);
+}
+figure button {
+  background-size: cover;
+  background-position: left;
+  border: none;
+  background-color: white;
+} */
+table {
+  margin: auto;
+  border-collapse: collapse;
+}
+thead tr {
+  background-color: rgb(75, 75, 75);
+  color: gray;
+}
+
+thead td {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+tbody td {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  background-color: rgb(234, 241, 245);
+  border-bottom: 3px solid white;
+}
+.right {
+  text-align: right;
+  margin-right: 2em;
+}
+table h1,
+table h3 {
+  flex: 1;
+  margin-left: 1em;
+}
+/* audio {
+  float: right;
+} */

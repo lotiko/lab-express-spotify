@@ -1,12 +1,25 @@
+<table>
+    <thead>
+        <tr>
+            <td>
+                <h1>Title</h1>
+                <h1 class="right">Listen</h1>
+            </td>
+        </tr>
+    </thead>
+<tbody>
 {{#each data}}
-<figure>
-    <figcaption>{{this.name}}</figcaption>
-    <audio
-        controls
-        src="{{this.preview_url}}">
-            Your browser does not support the
-            <code>audio</code> element.
-    </audio>
-</figure>
-
+<tr>
+            <td>
+                <h3>{{this.name}}</h3>
+                <audio
+                    controls
+                    src="{{this.preview_url}}">
+                        Your browser does not support the
+                        <code>audio</code> element.
+                </audio>
+            </td>
+        </tr>
 {{/each}}
+</tbody>
+</table>
