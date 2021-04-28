@@ -120,8 +120,9 @@ figure button {
   background-color: white;
 } */
 table {
-  margin: auto;
+  margin: 2em auto;
   border-collapse: collapse;
+  min-width: 70%;
 }
 thead tr {
   background-color: rgb(75, 75, 75);
