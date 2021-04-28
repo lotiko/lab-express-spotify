@@ -4,6 +4,7 @@
 body,
 p {
   margin: 0;
+  font-family: sans-serif;
 }
 /*************/
 /**HOME*******/
@@ -28,11 +29,10 @@ form {
 }
 input {
   margin: auto;
-  opacity: 1;
 }
 input[type="text"] {
   text-align: left;
-  width: 30em;
+  width: 15em;
   margin-bottom: 0;
 }
 input[type="submit"] {
@@ -40,7 +40,7 @@ input[type="submit"] {
   background: rgb(245, 94, 94);
   color: white;
   font-weight: 700;
-  padding: 0.5em;
+  padding: 0.3em;
   text-align: center;
   border: none;
   margin-top: 2em;
@@ -48,6 +48,9 @@ input[type="submit"] {
 /*************/
 /**CARD****/
 /*************/
+h2 {
+  text-align: center;
+}
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -64,6 +67,7 @@ input[type="submit"] {
   flex-direction: column;
   margin: auto;
   margin-top: 2em;
+  min-height: 280px;
 }
 a.button {
   text-decoration: none;
@@ -84,4 +88,5 @@ a.button {
   background-color: rgb(71, 71, 71);
   color: white;
   align-items: center;
+  flex: 1;
 }

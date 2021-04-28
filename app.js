@@ -32,22 +32,6 @@ app.get("/", function (req, res) {
   res.render("home");
 });
 
-function createDataCard(srcData, type) {
-  let newdata = {};
-  if (srcData.images[0]) {
-    newdata = {
-      name: srcData.name,
-      image: {
-        url: srcData.images[0].url,
-        size: calculateAspectRatioFit(srcData.images[0].width, srcData.images[0].height, 200, 200),
-      },
-      id: srcData.id,
-    };
-    return { ...newdata, type: type, subType: type === "artists" ? "albums" : "tracks" };
-  }
-  return;
-}
-
 app.get("/artist-search", function (req, res) {
   // res.render('/artist-search')
   spotifyApi
@@ -62,7 +46,7 @@ app.get("/artist-search", function (req, res) {
       }, []);
       console.log(dataView);
       // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
-      res.render("artist-search-results", { data: dataView }); // on va rendre la view ds laquelle on injecte la data
+      res.render("artist-search-results", { data: dataView, cardsTitle: false }); // on va rendre la view ds laquelle on injecte la data
     })
     .catch((err) => console.log("The error while searching artists occurred: ", err));
 });
@@ -70,9 +54,9 @@ app.get("/artist-search", function (req, res) {
 app.get("/albums/:id", async (req, res, next) => {
   try {
     let dataSpotify = await spotifyApi.getArtistAlbums(req.params.id);
-    let dataView = dataSpotify.body.items.map((element) => createDataCard(element, "albums"));
-    console.log(dataView);
-    res.render("albums-search-results", { data: dataView });
+    let dataView = dataSpotify.body.items.map((element) => createDataCard(element, "Albums"));
+    console.log(dataView, dataSpotify);
+    res.render("albums-search-results", { data: dataView, cardsTitle: req.query.name });
   } catch (error) {
     console.log("Oops error => ", error);
   }
@@ -106,4 +90,19 @@ function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
   var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
 
   return { width: srcWidth * ratio, height: srcHeight * ratio };
+}
+function createDataCard(srcData, type) {
+  let newdata = {};
+  if (srcData.images[0]) {
+    newdata = {
+      name: srcData.name,
+      image: {
+        url: srcData.images[0].url,
+        //size: calculateAspectRatioFit(srcData.images[0].width, srcData.images[0].height, 200, 200),
+      },
+      id: srcData.id,
+    };
+    return { ...newdata, type: type, subType: type === "artists" ? "albums" : "tracks" };
+  }
+  return;
 }
